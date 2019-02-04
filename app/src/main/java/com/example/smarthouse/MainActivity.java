@@ -27,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        Button sendOne = (Button) findViewById(R.id.button)
+        Button sendOne = (Button) findViewById(R.id.buttonOn)
+        Button sendNull = (Button) findViewById(R.id.buttonOff)
     }
 
     @Override
