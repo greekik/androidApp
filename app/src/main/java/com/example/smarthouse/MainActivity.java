@@ -28,8 +28,9 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        Button sendOne = (Button) findViewById(R.id.buttonOn);
-        Button sendNull = (Button) findViewById(R.id.buttonOff);
+        Button butSendOne = (Button) findViewById(R.id.buttonOn);
+        Button butSendNull = (Button) findViewById(R.id.buttonOff);
+        Button butConnect = (Button) findViewById(R.id.buttonOff);
         
         OnClickListener listenerOfsendOne = new OnClickListener() {
             @Override
@@ -38,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
  
-        sendOne.setOnClickListener(listenerOfsendOne);
+        butSendOne.setOnClickListener(listenerOfsendOne);
     }
 
     @Override
