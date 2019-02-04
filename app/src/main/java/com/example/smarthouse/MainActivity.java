@@ -29,6 +29,15 @@ public class MainActivity extends AppCompatActivity {
         });
         Button sendOne = (Button) findViewById(R.id.buttonOn)
         Button sendNull = (Button) findViewById(R.id.buttonOff)
+        
+        OnClickListener listenerOfsendOne = new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        };
+ 
+        sendOne.setOnClickListener(listenerOfsendOne);
     }
 
     @Override
