@@ -18,11 +18,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonOn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"
-        tools:layout_editor_absoluteX="156dp"
-        tools:layout_editor_absoluteY="121dp" />
+        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteY="148dp" />
+
+    <Button
+        android:id="@+id/buttonOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="244dp"
+        tools:layout_editor_absoluteY="148dp" />
 
 </android.support.constraint.ConstraintLayout>
