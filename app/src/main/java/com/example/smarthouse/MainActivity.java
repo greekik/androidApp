@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.view.View.OnClickListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,8 +28,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-        Button sendOne = (Button) findViewById(R.id.buttonOn)
-        Button sendNull = (Button) findViewById(R.id.buttonOff)
+        Button sendOne = (Button) findViewById(R.id.buttonOn);
+        Button sendNull = (Button) findViewById(R.id.buttonOff);
         
         OnClickListener listenerOfsendOne = new OnClickListener() {
             @Override
