@@ -10,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.view.View.OnClickListener;
+import java.net.InetAddress;
+import java.net.Socket;
 
 public class MainActivity extends AppCompatActivity {
 
