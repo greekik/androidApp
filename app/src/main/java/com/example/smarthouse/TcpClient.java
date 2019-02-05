@@ -17,6 +17,9 @@ public class TcpClient {
     public void connect() {
         try {
             s = new Socket("myhomerouter.ddns.net", 9090);
+            Log.i("TcpClient", "connect successful");
+//            String connectStatus = "Connect successful to myhomerouter.ddns.net:9090" + System.getProperty("line.separator");
+//            textView.setText("R.string.connectStatus");
         } catch (UnknownHostException e) {
             e.printStackTrace();
         } catch (IOException e) {
