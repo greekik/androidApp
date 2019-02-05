@@ -11,7 +11,9 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 
- private void runTcpClient() {
+
+public class TcpClient_test {
+public void runTcpClient() {
                             ServerSocket ss = null;
                             try {
                                 Socket s = new Socket("myhomerouter.ddns.net", 9090);
