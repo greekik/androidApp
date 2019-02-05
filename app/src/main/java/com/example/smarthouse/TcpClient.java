@@ -5,14 +5,16 @@ import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.net.UnknownHostException;
 
 
-public class TcpClient {
+ public class TcpClient {
     public Socket s = null;
     public void connect() {
         try {
@@ -27,10 +29,15 @@ public class TcpClient {
         }
     }
     public void send(String data) {
-        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+        BufferedWriter out = null;
+        try {
+            out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
         out.println(data+ System.getProperty("line.separator"));
         out.flush();
         Log.i("TcpClient", "sent: " + data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
     public String get() {
         BufferedWriter in = new BufferedWriter(new InputStreamReader(s.getInputStream()));

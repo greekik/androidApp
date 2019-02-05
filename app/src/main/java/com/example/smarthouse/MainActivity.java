@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         Button butConnect = (Button) findViewById(R.id.butConnect);
         TextView textView = findViewById(R.id.textView);
 
+
         OnClickListener listenerOfbutConnect = new OnClickListener() {
             public void onClick(View v) {
                 switch (v.getId()) {
