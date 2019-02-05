@@ -29,10 +29,10 @@ import java.net.UnknownHostException;
         }
     }
     public void send(String data) {
-        BufferedWriter out = null;
+       // BufferedWriter out = null;
         try {
-            out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
-        out.println(data+ System.getProperty("line.separator"));
+            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+        out.print(data+ System.getProperty("line.separator"));
         out.flush();
         Log.i("TcpClient", "sent: " + data);
         } catch (IOException e) {
