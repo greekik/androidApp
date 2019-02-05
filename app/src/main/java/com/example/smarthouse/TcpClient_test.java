@@ -17,11 +17,11 @@ import java.net.Socket;
  * @author Catalin Prata
  *         Date: 2/12/13
  */
-public class TcpClient {
+public class TcpClient_test {
 
-    public static final String SERVER_IP = "192.168.0.198"; //your computer IP address
-    public static final int SERVER_PORT = 64000;
-    // message to send to the server
+    public static final String SERVER_IP = "myhomerouter.ddns.net"; //your computer IP address
+    public static final int SERVER_PORT = 9090;
+    // Сообщение для отправки на сервер
     private String mServerMessage;
     // sends message received notifications
     private OnMessageReceived mMessageListener = null;
