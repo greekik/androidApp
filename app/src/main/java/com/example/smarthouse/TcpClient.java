@@ -1,6 +1,5 @@
  package com.example.smarthouse;
 
-import android.os.Message;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -8,8 +7,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
@@ -32,18 +29,24 @@ import java.net.UnknownHostException;
        // BufferedWriter out = null;
         try {
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
-        out.print(data+ System.getProperty("line.separator"));
-        out.flush();
-        Log.i("TcpClient", "sent: " + data);
+            out.write(data + System.getProperty("line.separator"));
+            out.flush();
+            Log.i("TcpClient", "sent: " + data);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     public String get() {
-        BufferedWriter in = new BufferedWriter(new InputStreamReader(s.getInputStream()));
-        String data = in.readLine() + System.getProperty("line.separator");
-        Log.i("TcpClient", "received: " + data);
-        s.close();
+        String data = null;
+        try {
+            BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
+            data = in.readLine() + System.getProperty("line.separator");
+            Log.i("TcpClient", "received: " + data);
+            s.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return data;
     }
 }
