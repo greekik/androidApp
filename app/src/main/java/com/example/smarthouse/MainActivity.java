@@ -42,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.butConnect:
-
+                        TcpClient tcp = new TcpClient();
+                        tcp.connect();
                         break;
                 }
             }
