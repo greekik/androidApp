@@ -33,33 +33,13 @@ public class MainActivity extends AppCompatActivity {
         Button butSendOne = (Button) findViewById(R.id.buttonOn);
         Button butSendNull = (Button) findViewById(R.id.buttonOff);
         Button butConnect = (Button) findViewById(R.id.butConnect);
+        TextView textView = findViewById(R.id.textView);
 
         OnClickListener listenerOfbutConnect = new OnClickListener() {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.butConnect:
-                        private void runTcpClient() {
-                            ServerSocket ss = null;
-                            try {
-                                Socket s = new Socket("myhomerouter.ddns.net", 9090);
-                                BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
-                                BufferedWriter out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
-                                //send output msg
-                                String outMsg = "TCP connecting to " + "9090" + System.getProperty("line.separator");
-                                out.write(outMsg);
-                                out.flush();
-                                Log.i("TcpClient", "sent: " + outMsg);
-                                //accept server response
-                                String inMsg = in .readLine() + System.getProperty("line.separator");
-                                Log.i("TcpClient", "received: " + inMsg);
-                                //close connection
-                                s.close();
-                            } catch (UnknownHostException e) {
-                                e.printStackTrace();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
+
                         break;
                 }
             }
