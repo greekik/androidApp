@@ -1,5 +1,6 @@
  package com.example.smarthouse;
 
+import android.os.AsyncTask;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -12,7 +13,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 
- public class TcpClient {
+ public class TcpClient extends AsyncTask<String, Void, String> {
     public Socket s = null;
     public String address = "myhomerouter.ddns.net";
     public void connect() {
@@ -28,7 +29,7 @@ import java.net.UnknownHostException;
             e.printStackTrace();
         }
     }
-    public void send(String data) {
+    public void sendData(String data) {
        // BufferedWriter out = null;
         try {
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
@@ -39,7 +40,13 @@ import java.net.UnknownHostException;
             e.printStackTrace();
         }
     }
-    public String get() {
+
+     @Override
+     protected String doInBackground(String... strings) {
+         return null;
+     }
+
+     public String getData() {
         String data = null;
         try {
             BufferedReader in = new BufferedReader(new InputStreamReader(s.getInputStream()));
