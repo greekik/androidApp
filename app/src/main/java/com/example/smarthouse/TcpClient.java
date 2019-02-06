@@ -13,9 +13,11 @@ import java.net.UnknownHostException;
 
  public class TcpClient {
     public Socket s = null;
+    public address = "myhomerouter.ddns.net";
     public void connect() {
         try {
-            s = new Socket("myhomerouter.ddns.net", 9090);
+            InetAddress serverAddr = InetAddress.getByName(address);
+            s = new Socket(serverAddr, 9090);
             Log.i("TcpClient", "connect successful");
 //            String connectStatus = "Connect successful to myhomerouter.ddns.net:9090" + System.getProperty("line.separator");
 //            textView.setText("R.string.connectStatus");
