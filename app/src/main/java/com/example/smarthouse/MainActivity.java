@@ -1,6 +1,7 @@
 package com.example.smarthouse;
 
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
         Button butSendNull = (Button) findViewById(R.id.buttonOff);
         Button butConnect = (Button) findViewById(R.id.butConnect);
         TextView textView = findViewById(R.id.textView);
-
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
         OnClickListener listenerOfbutConnect = new OnClickListener() {
             public void onClick(View v) {
