@@ -35,7 +35,7 @@ public class TcpClient_test {
     /**
      * Constructor of the class. OnMessagedReceived listens for the messages received from server
      */
-    public TcpClient(OnMessageReceived listener) {
+    public TcpClient_test(OnMessageReceived listener) {
         mMessageListener = listener;
     }
 
