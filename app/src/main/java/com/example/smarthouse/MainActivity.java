@@ -37,15 +37,14 @@ public class MainActivity extends AppCompatActivity {
         Button butSendNull = (Button) findViewById(R.id.buttonOff);
         Button butConnect = (Button) findViewById(R.id.butConnect);
         TextView textView = findViewById(R.id.textView);
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
 
         OnClickListener listenerOfbutConnect = new OnClickListener() {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.butConnect:
                         TcpClient tcp = new TcpClient();
-                        tcp.connect();
+                        Thread connectThread = new Thread(tcp.connect);
+                        connectThread.run();
                         break;
                 }
             }
