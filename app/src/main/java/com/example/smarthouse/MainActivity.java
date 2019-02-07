@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.butConnect:
                         TcpClient tcp = new TcpClient();
                         Thread connectThread = new Thread(tcp.connect);
-                        connectThread.run();
+                        connectThread.start();
                         break;
                 }
             }
