@@ -2,12 +2,7 @@
 
 import android.util.Log;
 import android.widget.Button;
-import android.view.View;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.widget.Button;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
+import android.support.v7.app.AppCompatActivity;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -35,7 +30,7 @@ import java.net.UnknownHostException;
                 Log.i("TcpClient", "connect start");
                 InetAddress serverAddr = InetAddress.getByName(address);
                 s = new Socket(serverAddr.getHostAddress(), 9090);
-                butConnect.post(returnConnect);
+                runOnUiThread(returnConnect);
                 Log.i("TcpClient", "connect successful");
 //            String connectStatus = "Connect successful to myhomerouter.ddns.net:9090" + System.getProperty("line.separator");
 //            textView.setText("R.string.connectStatus");
