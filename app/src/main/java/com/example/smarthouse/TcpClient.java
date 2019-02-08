@@ -15,6 +15,7 @@ import java.net.UnknownHostException;
  public class TcpClient extends Thread{
     public Socket s = null;
     public String address = "myhomerouter.ddns.net";
+    Button butConnect = (Button) findViewById(R.id.butConnect);
     Runnable returnConnect = new Runnable() {
         public void run() {
             butConnect.setText("Подключено");
