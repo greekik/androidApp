@@ -1,8 +1,9 @@
 package com.example.smarthouse;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.StrictMode;
-import android.os.Message
+import android.os.Message;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -14,12 +15,14 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import com.example.smarthouse.TcpClient;
 
 import java.net.InetAddress;
 import java.net.Socket;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MyApp";
+    Handler h;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         });
         Button butSendOne = (Button) findViewById(R.id.buttonOn);
         Button butSendNull = (Button) findViewById(R.id.buttonOff);
-        Button butConnect = (Button) findViewById(R.id.butConnect);
+        final Button butConnect = (Button) findViewById(R.id.butConnect);
         TextView textView = findViewById(R.id.textView);
 
         OnClickListener listenerOfbutConnect = new OnClickListener() {
@@ -57,7 +60,10 @@ public class MainActivity extends AppCompatActivity {
         h = new Handler() {
             public void handleMessage(android.os.Message msg) {
             // обновляем TextView
-            butConnect.setText("msg");
+                switch(msg.what) {
+                    case 0:
+                    butConnect.setText("подклбчено");
+                }
             };
         };
     }
