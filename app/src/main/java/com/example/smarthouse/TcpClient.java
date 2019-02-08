@@ -18,7 +18,8 @@ import java.net.UnknownHostException;
     Runnable returnConnect = new Runnable() {
         public void run() {
             butConnect.setText("Подключено");
-    }
+        }
+    };
     Runnable connect = new Runnable() {
         @Override
         public void run() {
