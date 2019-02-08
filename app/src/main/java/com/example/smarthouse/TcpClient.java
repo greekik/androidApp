@@ -18,11 +18,11 @@ import java.net.UnknownHostException;
     public Socket s = null;
     public String address = "myhomerouter.ddns.net";
     Button butConnect = (Button) findViewById(R.id.butConnect);
-    Runnable returnConnect = new Runnable() {
+/*    Runnable returnConnect = new Runnable() {
         public void run() {
             butConnect.setText("Подключено");
         }
-    };
+    };*/
     Runnable connect = new Runnable() {
         @Override
         public void run() {
@@ -30,7 +30,7 @@ import java.net.UnknownHostException;
                 Log.i("TcpClient", "connect start");
                 InetAddress serverAddr = InetAddress.getByName(address);
                 s = new Socket(serverAddr.getHostAddress(), 9090);
-                runOnUiThread(returnConnect);
+                h.sendEmptyMessage("Connected");
                 Log.i("TcpClient", "connect successful");
 //            String connectStatus = "Connect successful to myhomerouter.ddns.net:9090" + System.getProperty("line.separator");
 //            textView.setText("R.string.connectStatus");
