@@ -2,6 +2,12 @@
 
 import android.util.Log;
 import android.widget.Button;
+import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Button;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
