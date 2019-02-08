@@ -23,8 +23,10 @@ import java.net.Socket;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MyApp";
     Handler h;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -56,12 +58,12 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         butConnect.setOnClickListener(listenerOfbutConnect);
-        
+
         h = new Handler() {
             public void handleMessage(android.os.Message msg) {
             // обновляем TextView
                 switch(msg.what) {
-                    case 0:
+                    case 1:
                     butConnect.setText("подклбчено");
                 }
             };

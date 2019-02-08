@@ -1,6 +1,7 @@
  package com.example.smarthouse;
 
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.support.v7.app.AppCompatActivity;
 
@@ -17,7 +18,6 @@ import java.util.logging.Handler;
 import com.example.smarthouse.MainActivity;
 
  public class TcpClient extends Thread{
-     MainActivity mn;
     public Socket s = null;
     public String address = "myhomerouter.ddns.net";
 //    Button butConnect = (Button) findViewById(R.id.butConnect);
@@ -33,7 +33,7 @@ import com.example.smarthouse.MainActivity;
                 Log.i("TcpClient", "connect start");
                 InetAddress serverAddr = InetAddress.getByName(address);
                 s = new Socket(serverAddr.getHostAddress(), 9090);
-                mn.h.sendEmptyMessage(0);
+                h.sendEmptyMessage(1);
                 Log.i("TcpClient", "connect successful");
 //            String connectStatus = "Connect successful to myhomerouter.ddns.net:9090" + System.getProperty("line.separator");
 //            textView.setText("R.string.connectStatus");
