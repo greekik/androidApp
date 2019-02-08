@@ -1,6 +1,7 @@
  package com.example.smarthouse;
 
 import android.util.Log;
+import android.widget.Button;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
