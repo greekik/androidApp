@@ -2,6 +2,7 @@ package com.example.smarthouse;
 
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.os.Message
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -51,8 +52,12 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
-
         butConnect.setOnClickListener(listenerOfbutConnect);
+        
+        public void handleMessage(Message msg) {
+            // обновляем TextView
+            butConnect.setText((String) msg);
+        };
     }
 
     @Override
