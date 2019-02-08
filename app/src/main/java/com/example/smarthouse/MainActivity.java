@@ -54,9 +54,11 @@ public class MainActivity extends AppCompatActivity {
         };
         butConnect.setOnClickListener(listenerOfbutConnect);
         
-        public void handleMessage(Message msg) {
+        h = new Handler() {
+            public void handleMessage(android.os.Message msg) {
             // обновляем TextView
-            butConnect.setText((String) msg);
+            butConnect.setText("msg");
+            };
         };
     }
 
