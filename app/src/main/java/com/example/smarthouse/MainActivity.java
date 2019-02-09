@@ -44,13 +44,14 @@ public class MainActivity extends AppCompatActivity {
         Button butSendNull = (Button) findViewById(R.id.buttonOff);
         final Button butConnect = (Button) findViewById(R.id.butConnect);
         TextView textView = findViewById(R.id.textView);
+        final MainActivity activity = this;
 
         OnClickListener listenerOfbutConnect = new OnClickListener() {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.butConnect:
                         Log.i(TAG,"grydudududuhff");
-                        TcpClient tcp = new TcpClient();
+                        TcpClient tcp = new TcpClient(activity);
                         Thread connectThread = new Thread(tcp.connect);
                         connectThread.start();
                         break;
@@ -62,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         h = new Handler() {
             public void handleMessage(android.os.Message msg) {
             // обновляем TextView
+                Bundle bundle = msg.getData();
+                butConnect.setText("подклбчено");
                 switch(msg.what) {
                     case 1:
                     butConnect.setText("подклбчено");

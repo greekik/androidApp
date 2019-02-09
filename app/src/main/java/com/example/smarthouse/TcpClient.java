@@ -1,5 +1,8 @@
  package com.example.smarthouse;
 
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,11 +16,12 @@ import java.io.OutputStreamWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.logging.Handler;
 
 import com.example.smarthouse.MainActivity;
 
- public class TcpClient extends Thread{
+ public class TcpClient {
+     Handler h = new Handler();
+     MainActivity mainActivity;
     public Socket s = null;
     public String address = "myhomerouter.ddns.net";
 //    Button butConnect = (Button) findViewById(R.id.butConnect);
@@ -26,14 +30,22 @@ import com.example.smarthouse.MainActivity;
             butConnect.setText("Подключено");
         }
     };*/
+    public TcpClient(MainActivity activity){
+        this.mainActivity = activity;
+    }
     Runnable connect = new Runnable() {
         @Override
         public void run() {
             try {
+
+                Message msg = new Message();
+                Bundle bundle = new Bundle();
+                bundle.putString("status", "ok");
+                msg.setData(bundle);
                 Log.i("TcpClient", "connect start");
                 InetAddress serverAddr = InetAddress.getByName(address);
                 s = new Socket(serverAddr.getHostAddress(), 9090);
-                h.sendEmptyMessage(1);
+                mainActivity.h.sendMessage(msg);
                 Log.i("TcpClient", "connect successful");
 //            String connectStatus = "Connect successful to myhomerouter.ddns.net:9090" + System.getProperty("line.separator");
 //            textView.setText("R.string.connectStatus");
