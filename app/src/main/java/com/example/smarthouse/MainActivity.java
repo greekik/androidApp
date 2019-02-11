@@ -64,7 +64,10 @@ public class MainActivity extends AppCompatActivity {
             public void handleMessage(android.os.Message msg) {
             // обновляем TextView
                 Bundle bundle = msg.getData();
-                butConnect.setText("подклбчено");
+                    if (bundle.getString("status"))
+                    {
+                        butConnect.setText("Подключено");
+                    }
                 switch(msg.what) {
                     case 1:
                     butConnect.setText("подклбчено");
