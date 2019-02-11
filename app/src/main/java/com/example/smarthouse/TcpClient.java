@@ -37,14 +37,13 @@ import com.example.smarthouse.MainActivity;
         @Override
         public void run() {
             try {
-
                 Message msg = new Message();
                 Bundle bundle = new Bundle();
-                bundle.putString("status", "ok");
                 msg.setData(bundle);
                 Log.i("TcpClient", "connect start");
                 InetAddress serverAddr = InetAddress.getByName(address);
                 s = new Socket(serverAddr.getHostAddress(), 9090);
+                bundle.putString("status", "connected");
                 mainActivity.h.sendMessage(msg);
                 Log.i("TcpClient", "connect successful");
 //            String connectStatus = "Connect successful to myhomerouter.ddns.net:9090" + System.getProperty("line.separator");
