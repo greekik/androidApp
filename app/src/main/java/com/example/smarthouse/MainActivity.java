@@ -68,10 +68,6 @@ public class MainActivity extends AppCompatActivity {
                     {
                         butConnect.setText("Подключено");
                     }
-                switch(msg.what) {
-                    case 1:
-                    butConnect.setText("подклбчено");
-                }
             };
         };
     }
