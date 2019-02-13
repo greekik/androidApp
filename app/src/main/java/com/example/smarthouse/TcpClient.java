@@ -54,19 +54,19 @@ import com.example.smarthouse.MainActivity;
                 e.printStackTrace();
             }
         }
+        public void send(String data) {
+       // BufferedWriter out = null;
+        	try {
+            	BufferedWriter out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+            	out.write(data + System.getProperty("line.separator"));
+            	out.flush();
+            	Log.i("TcpClient", "sent: " + data);
+        	} catch (IOException e) {
+            	e.printStackTrace();
+        	}
+    	}
     };
 
-    public void send(String data) {
-       // BufferedWriter out = null;
-        try {
-            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
-            out.write(data + System.getProperty("line.separator"));
-            out.flush();
-            Log.i("TcpClient", "sent: " + data);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
     public String get() {
         String data = null;
         try {
