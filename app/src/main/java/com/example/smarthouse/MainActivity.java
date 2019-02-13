@@ -23,6 +23,8 @@ import java.net.Socket;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MyApp";
     Handler h;
+    TcpClient tcp = null;
+    Thread connectThread = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (v.getId()) {
                     case R.id.butConnect:
                         Log.i(TAG,"grydudududuhff");
-                        TcpClient tcp = new TcpClient(activity);
+                        tcp = new TcpClient(activity);
                         Thread connectThread = new Thread(tcp.connect);
                         connectThread.start();
                         break;
@@ -60,11 +62,35 @@ public class MainActivity extends AppCompatActivity {
         };
         butConnect.setOnClickListener(listenerOfbutConnect);
 
+        OnClickListener listenerOfbutOne = new OnClickListener() {
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.buttonOn:
+                        Log.i(TAG,"grydudududuhff");
+                        tcp.sendData("rele 1 1");
+                        break;
+                }
+            }
+        };
+        butSendOne.setOnClickListener(listenerOfbutOne);
+
+        OnClickListener listenerOfbutNull = new OnClickListener() {
+            public void onClick(View v) {
+                switch (v.getId()) {
+                    case R.id.buttonOn:
+                        Log.i(TAG,"grydudududuhff");
+                        tcp.sendData("rele 1 1");
+                        break;
+                }
+            }
+        };
+        butSendNull.setOnClickListener(listenerOfbutNull);
+
         h = new Handler() {
             public void handleMessage(android.os.Message msg) {
             // обновляем TextView
                 Bundle bundle = msg.getData();
-                    if (bundle.getString("status"))
+                    if (bundle.getString("status")=="connected")
                     {
                         butConnect.setText("Подключено");
                     }
