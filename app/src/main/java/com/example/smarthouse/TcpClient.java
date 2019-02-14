@@ -25,12 +25,7 @@ import com.example.smarthouse.MainActivity;
     public Socket s = null;
     public String address = "myhomerouter.ddns.net";
     public String dataFromSend = null;
-//    Button butConnect = (Button) findViewById(R.id.butConnect);
-/*    Runnable returnConnect = new Runnable() {
-        public void run() {
-            butConnect.setText("Подключено");
-        }
-    };*/
+
     public TcpClient(MainActivity activity){
         this.mainActivity = activity;
     }
@@ -56,17 +51,6 @@ import com.example.smarthouse.MainActivity;
                 e.printStackTrace();
             }
         }
-        public void send(String data) {
-       // BufferedWriter out = null;
-        	try {
-            	BufferedWriter out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
-            	out.write(data + System.getProperty("line.separator"));
-            	out.flush();
-            	Log.i("TcpClient", "sent: " + data);
-        	} catch (IOException e) {
-            	e.printStackTrace();
-        	}
-    	}
     };
 
      public void sendData(String dataFromSend){
@@ -80,14 +64,6 @@ import com.example.smarthouse.MainActivity;
              e.printStackTrace();
          }
      }
-
-     Runnable send = new Runnable() {
-         @Override
-         public void run() {
-             // BufferedWriter out = null;
-
-         }
-     };
 
     public String get() {
         String data = null;
