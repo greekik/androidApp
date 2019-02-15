@@ -85,9 +85,9 @@ import com.example.smarthouse.MainActivity;
          public void handleMessage(android.os.Message msg) {
              // обновляем TextView
              Bundle bundle = msg.getData();
-             if (bundle.getString("status")=="connected")
+             if (bundle.getString("send"))
              {
-                 butConnect.setText("Подключено");
+                 sendData(bundle.getString("send"));
              }
          };
      };
