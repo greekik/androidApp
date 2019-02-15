@@ -67,8 +67,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.buttonOn:
-                        Log.i(TAG,"grydudududuhff");
-                        tcp.sendData("rele 1 1");
+                        Log.i(TAG,"BUTTON send rele 1 1");
+                        Message msg = new Message();
+                        bundle.putString("send","rele 1 1");
+                        msg.setData(bundle);
+                        tcp.h.sendMessage(msg);
                         break;
                 }
             }
@@ -79,9 +82,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.buttonOn:
-                        Log.i(TAG,"BUTTON send rele 1 1");
+                        Log.i(TAG,"BUTTON send rele 1 0");
                         Message msg = new Message();
-                        bundle.putString("send","rele 1 1");
+                        bundle.putString("send","rele 1 0");
                         msg.setData(bundle);
                         tcp.h.sendMessage(msg);
                        // tcp.sendData("rele 1 1");
