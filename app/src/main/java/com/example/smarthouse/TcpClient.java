@@ -24,6 +24,7 @@ import com.example.smarthouse.MainActivity;
 
   
      MainActivity mainActivity;
+     BufferedWriter out;
     public Socket s = null;
     public String address = "myhomerouter.ddns.net";
     public String dataFromSend = null;
@@ -31,6 +32,14 @@ import com.example.smarthouse.MainActivity;
     public TcpClient(MainActivity activity){
         this.mainActivity = activity;
     }
+
+     public BufferedWriter getWriter(){
+         return this.out;
+     }
+
+     public Socket getSocket(){
+         return this.s;
+     }
 
     Runnable connect = new Runnable() {
         @Override
@@ -45,8 +54,7 @@ import com.example.smarthouse.MainActivity;
                 bundle.putString("status", "connected");
                 mainActivity.h.sendMessage(msg);
                 Log.i("TcpClient", "connect successful");
-//            String connectStatus = "Connect successful to myhomerouter.ddns.net:9090" + System.getProperty("line.separator");
-//            textView.setText("R.string.connectStatus");
+
             } catch (UnknownHostException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -55,17 +63,20 @@ import com.example.smarthouse.MainActivity;
         }
     };
 
-     public void sendData(String dataFromSend){
-         this.dataFromSend = dataFromSend;
-         try {
-             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
-             out.write(dataFromSend + System.getProperty("line.separator"));
-             out.flush();
-             Log.i("TcpClient", "sent: " + dataFromSend);
-         } catch (IOException e) {
-             e.printStackTrace();
-         }
-     }
+    Runnable sendData = new Runnable() {
+        @Override
+        public void run() {
+                try {
+                    out = new BufferedWriter(new OutputStreamWriter(s.getOutputStream()));
+                    out.write(dataFromSend + System.getProperty("line.separator"));
+                    out.flush();
+                    Log.i("TcpClient", "sent: " + dataFromSend);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+        }
+    };
+
 
     public String get() {
         String data = null;
@@ -88,7 +99,15 @@ import com.example.smarthouse.MainActivity;
              if (bundle.getString("send") != null)
              {
                  Log.i("tcp","Handler geted msg");
-                 sendData(bundle.getString("send"));
+                 dataFromSend = bundle.getString("send");
+                 try {
+                     Thread send = new Thread(sendData);
+                     send.start();
+                     //sendData(bundle.getString("send"));
+                 } catch (Exception e) {
+                     e.printStackTrace();
+                 }
+                // sendData(bundle.getString("send"));
              }
          };
      };
