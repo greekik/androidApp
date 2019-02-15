@@ -79,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.buttonOn:
+                        Log.i(TAG,"BUTTON send rele 1 1");
                         Message msg = new Message();
-                        Log.i(TAG,"grydudududuhff");
                         bundle.putString("send","rele 1 1");
                         msg.setData(bundle);
                         tcp.h.sendMessage(msg);
