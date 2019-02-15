@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     TcpClient tcp = null;
     Thread connectThread = null;
     Bundle bundle = new Bundle();
+    Thread sendThread;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
                     .setAction("Action", null).show();
             }
         });
-        Button butSendOne = (Button) findViewById(R.id.buttonOn);
-        Button butSendNull = (Button) findViewById(R.id.buttonOff);
+        final Button butSendOne = (Button) findViewById(R.id.buttonOn);
+        final Button butSendNull = (Button) findViewById(R.id.buttonOff);
         final Button butConnect = (Button) findViewById(R.id.butConnect);
         TextView textView = findViewById(R.id.textView);
         final MainActivity activity = this;
@@ -63,36 +64,26 @@ public class MainActivity extends AppCompatActivity {
         };
         butConnect.setOnClickListener(listenerOfbutConnect);
 
-        OnClickListener listenerOfbutOne = new OnClickListener() {
+        OnClickListener listenerOfButton = new OnClickListener() {
             public void onClick(View v) {
                 switch (v.getId()) {
                     case R.id.buttonOn:
                         Log.i(TAG,"BUTTON send rele 1 1");
-                        Message msg = new Message();
-                        bundle.putString("send","rele 1 1");
-                        msg.setData(bundle);
-                        tcp.h.sendMessage(msg);
+                        tcp.dataFromSend = "rele 1 1";
+                        sendThread = new Thread(tcp.sendData);
+                        sendThread.start();
                         break;
-                }
-            }
-        };
-        butSendOne.setOnClickListener(listenerOfbutOne);
-
-        OnClickListener listenerOfbutNull = new OnClickListener() {
-            public void onClick(View v) {
-                switch (v.getId()) {
-                    case R.id.buttonOn:
+                    case R.id.buttonOff:
                         Log.i(TAG,"BUTTON send rele 1 0");
-                        Message msg = new Message();
-                        bundle.putString("send","rele 1 0");
-                        msg.setData(bundle);
-                        tcp.h.sendMessage(msg);
-                       // tcp.sendData("rele 1 1");
+                        tcp.dataFromSend = "rele 1 0";
+                        sendThread = new Thread(tcp.sendData);
+                        sendThread.start();
                         break;
                 }
             }
         };
-        butSendNull.setOnClickListener(listenerOfbutNull);
+        butSendOne.setOnClickListener(listenerOfButton);
+        butSendNull.setOnClickListener(listenerOfButton);
 
         h = new Handler() {
             public void handleMessage(android.os.Message msg) {

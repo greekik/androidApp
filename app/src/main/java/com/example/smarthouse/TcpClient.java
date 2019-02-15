@@ -103,7 +103,6 @@ import com.example.smarthouse.MainActivity;
                  try {
                      Thread send = new Thread(sendData);
                      send.start();
-                     //sendData(bundle.getString("send"));
                  } catch (Exception e) {
                      e.printStackTrace();
                  }
