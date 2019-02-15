@@ -85,7 +85,7 @@ import com.example.smarthouse.MainActivity;
          public void handleMessage(android.os.Message msg) {
              // обновляем TextView
              Bundle bundle = msg.getData();
-             if (bundle.getString("send"))
+             if (bundle.getString("send") != null)
              {
                  sendData(bundle.getString("send"));
              }
