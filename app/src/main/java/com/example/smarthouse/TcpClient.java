@@ -87,7 +87,7 @@ import com.example.smarthouse.MainActivity;
              Bundle bundle = msg.getData();
              if (bundle.getString("send") != null)
              {
-                 Log.i(TAG,"Handler geted msg");
+                 Log.i("tcp","Handler geted msg");
                  sendData(bundle.getString("send"));
              }
          };
