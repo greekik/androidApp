@@ -20,7 +20,18 @@ import java.net.UnknownHostException;
 import com.example.smarthouse.MainActivity;
 
  public class TcpClient {
-     Handler h = new Handler();
+
+  Handler h = new Handler() {
+       public void handleMessage(android.os.Message msg) {
+           // обновляем TextView
+           Bundle bundle = msg.getData();
+               if (bundle.getString("status")=="connected")
+               {
+                   butConnect.setText("Подключено");
+               }
+       };
+   };
+  
      MainActivity mainActivity;
     public Socket s = null;
     public String address = "myhomerouter.ddns.net";
@@ -78,15 +89,4 @@ import com.example.smarthouse.MainActivity;
         }
         return data;
     }
-  
-    h = new Handler() {
-       public void handleMessage(android.os.Message msg) {
-           // обновляем TextView
-           Bundle bundle = msg.getData();
-               if (bundle.getString("status")=="connected")
-               {
-                   butConnect.setText("Подключено");
-               }
-       };
-   };
 }
