@@ -47,6 +47,10 @@ public class MainActivity extends AppCompatActivity {
         final Button butSendOne = (Button) findViewById(R.id.buttonOn);
         final Button butSendNull = (Button) findViewById(R.id.buttonOff);
         final Button butConnect = (Button) findViewById(R.id.butConnect);
+        final Switch switchRele1 = (Switch) findViewById(R.id.monitored_switch);
+		if (switch != null) {
+			switch.setOnCheckedChangeListener(this);
+		}
         TextView textView = findViewById(R.id.textView);
         final MainActivity activity = this;
 
@@ -85,6 +89,23 @@ public class MainActivity extends AppCompatActivity {
         butSendOne.setOnClickListener(listenerOfButton);
         butSendNull.setOnClickListener(listenerOfButton);
 
+        OnCheckedChangeListener rele1Listener = new OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                        Log.i(TAG,"BUTTON send rele 1 1");
+                        tcp.dataFromSend = "rele 1 1";
+                        sendThread = new Thread(tcp.sendData);
+                        sendThread.start();
+                } else {
+                        Log.i(TAG,"BUTTON send rele 1 0");
+                        tcp.dataFromSend = "rele 1 0";
+                        sendThread = new Thread(tcp.sendData);
+                        sendThread.start();
+                }
+            }
+        };
+        switchRele1.setOnCheckedChangeListener(rele1Listener);
+        
         h = new Handler() {
             public void handleMessage(android.os.Message msg) {
             // обновляем TextView
