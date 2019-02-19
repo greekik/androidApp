@@ -14,7 +14,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.view.View.OnClickListener;
+import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Switch;
 import com.example.smarthouse.TcpClient;
 
 import java.net.InetAddress;
@@ -47,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         final Button butSendOne = (Button) findViewById(R.id.buttonOn);
         final Button butSendNull = (Button) findViewById(R.id.buttonOff);
         final Button butConnect = (Button) findViewById(R.id.butConnect);
-        final Switch switchRele1 = (Switch) findViewById(R.id.monitored_switch);
+        final Switch switchRele1 = (Switch) findViewById(R.id.switchRele1);
         TextView textView = findViewById(R.id.textView);
         final MainActivity activity = this;
 
@@ -86,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         butSendOne.setOnClickListener(listenerOfButton);
         butSendNull.setOnClickListener(listenerOfButton);
 
-        OnCheckedChangeListener rele1Listener = new OnCheckedChangeListener() {
+        CompoundButton.OnCheckedChangeListener rele1Listener = new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                         Log.i(TAG,"BUTTON send rele 1 1");
