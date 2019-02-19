@@ -44,9 +44,11 @@ import com.example.smarthouse.MainActivity;
     Runnable connect = new Runnable() {
         @Override
         public void run() {
+            Message msg = new Message();
+            Bundle bundle = new Bundle();
             try {
-                Message msg = new Message();
-                Bundle bundle = new Bundle();
+
+
                 msg.setData(bundle);
                 Log.i("TcpClient", "connect start");
                 InetAddress serverAddr = InetAddress.getByName(address);
