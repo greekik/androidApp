@@ -111,7 +111,11 @@ public class MainActivity extends AppCompatActivity {
                 Bundle bundle = msg.getData();
                     if (bundle.getString("status")=="connected")
                     {
-                        butConnect.setText("Подключено");
+                        butConnect.setText("Отсоединиться");
+                    }
+                    if (bundle.getString("status")=="disconnected")
+                    {
+                        butConnect.setText("Соединиться");
                     }
             };
         };
