@@ -48,9 +48,6 @@ public class MainActivity extends AppCompatActivity {
         final Button butSendNull = (Button) findViewById(R.id.buttonOff);
         final Button butConnect = (Button) findViewById(R.id.butConnect);
         final Switch switchRele1 = (Switch) findViewById(R.id.monitored_switch);
-		if (switch != null) {
-			switch.setOnCheckedChangeListener(this);
-		}
         TextView textView = findViewById(R.id.textView);
         final MainActivity activity = this;
 
