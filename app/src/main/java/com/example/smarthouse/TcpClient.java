@@ -56,8 +56,16 @@ import com.example.smarthouse.MainActivity;
                 Log.i("TcpClient", "connect successful");
 
             } catch (UnknownHostException e) {
+                bundle.putString("status", "disconnected");
+                mainActivity.h.sendMessage(msg);
                 e.printStackTrace();
             } catch (IOException e) {
+                bundle.putString("status", "disconnected");
+                mainActivity.h.sendMessage(msg);
+                e.printStackTrace();
+            } catch (Exception e) {
+                bundle.putString("status", "disconnected");
+                mainActivity.h.sendMessage(msg);
                 e.printStackTrace();
             }
         }
