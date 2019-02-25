@@ -81,6 +81,7 @@ import com.example.smarthouse.MainActivity;
                     out.write(dataFromSend + System.getProperty("line.separator"));
                     out.flush();
                     Log.i("TcpClient", "sent: " + dataFromSend);
+                    Thread.currentThread().interrupt();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
