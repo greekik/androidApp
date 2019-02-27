@@ -38,13 +38,13 @@
         app:menu="@menu/activity_sidebar_main_drawer" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fab1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        app:layout_anchor="@id/photo"
+        app:layout_anchor="@id/nav_view"
         app:layout_anchorGravity="bottom|right|end"
-        android:src="@drawable/ic_account_plus_white_48dp"
+        android:src="@drawable/side_nav_bar"
         android:elevation="8dp"/>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
